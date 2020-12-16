@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ai.apps.AiConfig'
+    'ai.apps.AiConfig',
+    'rest_framework'
 ]
 
 REST_FRAMEWORK = {
