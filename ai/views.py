@@ -41,11 +41,11 @@ def AiImgGrocery(request):
 @api_view(['GET'])
 def AITest(request):
     # 이미지 정보 받음
-    # url = request.GET.get('url')
-    # print('url : ', url)
+    url = request.GET.get('url')
+    print('url : ', url)
 
     #------------근웅----------------
-    url = "https://themightiestkpk1.s3.amazonaws.com/train12124.jpg"
+    # url = "https://themightiestkpk1.s3.amazonaws.com/train12124.jpg"
     # url = 'https://themightiestkpk1.s3.amazonaws.com/test9.jpg'
     # model_path = 'ai/000/trained_weights_final.h5'
     # class_path = 'ai/_classes.txt'
