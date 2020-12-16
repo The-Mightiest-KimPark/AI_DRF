@@ -162,7 +162,7 @@ class YOLO(object):
             for j in range(len(my_result)):
                 if my_result[j]['name'] == df.iloc[i,0]:
                     my_result[j]['count'] += 1
-                    my_result[j]['coordindate'].append(str(list(df.iloc[i,:][1:3])))
+                    my_result[j]['coordindate'].append(list(df.iloc[i,:][1:3]))
                     break
         # for dct in my_result:
         #     dct['coordindate'] = '{}'.format(dct['coordindate'])
