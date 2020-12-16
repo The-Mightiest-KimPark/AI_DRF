@@ -85,7 +85,7 @@ def AITest(request):
     # print('타입 : ', type(ai_result))
     # ai_result = json.loads(ai_result)
     # print('타입 : ', type(ai_result))
-    return Response(ai_result)
+    return JsonResponse(ai_result, safe=False)
 
         
 
