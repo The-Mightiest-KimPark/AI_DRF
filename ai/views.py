@@ -34,7 +34,7 @@ def AiImgGrocery(request):
     ai_result = load.pre_yolo.yolo.my_detect_image(img)
 
     # ------------------------------
-    return JsonResponse(ai_result)
+    return JsonResponse(ai_result, safe=False)
 
   
 # AI 이미지 분석을 통한 결과 저장 복사본
@@ -78,8 +78,14 @@ def AITest(request):
     #     'coordinate' : [[1,2],[3,2]]
     # }]
 
- 
-    return JsonResponse(ai_result)
+    print('타입 : ', type(ai_result))
+    print('ai_result : ', ai_result)
+    
+    # ai_result = json.dumps(ai_result)
+    # print('타입 : ', type(ai_result))
+    # ai_result = json.loads(ai_result)
+    # print('타입 : ', type(ai_result))
+    return Response(ai_result)
 
         
 
