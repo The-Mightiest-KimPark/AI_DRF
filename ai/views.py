@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -33,7 +34,7 @@ def AiImgGrocery(request):
     ai_result = load.pre_yolo.yolo.my_detect_image(img)
 
     # ------------------------------
-    return Response(ai_result)
+    return JsonResponse(ai_result)
 
   
 # AI 이미지 분석을 통한 결과 저장 복사본
@@ -78,7 +79,7 @@ def AITest(request):
     # }]
 
  
-    return Response(ai_result)
+    return JsonResponse(ai_result)
 
         
 
