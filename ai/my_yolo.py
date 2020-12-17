@@ -21,6 +21,8 @@ import os
 from keras.utils import multi_gpu_model
 import tensorflow as tf
 
+import json
+
 #from ai.models import AllGrocery
 
 
@@ -155,17 +157,20 @@ class YOLO(object):
 
         df = pd.DataFrame({'name': names, 'x_coord':x_coords, 'y_coord':y_coords})
         name_unq = df['name'].unique()
-        my_result = [{'name' : name_unq[j], 'count': 0, 'coordindate' : [] } for j in range(name_unq.shape[0])]
+        my_result = [{'name' : name_unq[j], 'count': 0, 'coordinate' : [] } for j in range(name_unq.shape[0])]
 
 
         for i in range(df.shape[0]):
             for j in range(len(my_result)):
                 if my_result[j]['name'] == df.iloc[i,0]:
                     my_result[j]['count'] += 1
-                    my_result[j]['coordindate'].append(list(df.iloc[i,:][1:3]))
+                    # my_result[j]['coordinate'] = '안녕'
+                    my_result[j]['coordinate'].append(list(df.iloc[i,:][1:3]))
+                    # my_result[j]['coordinate'].append({"x": df.iloc[i,:][1], "y":df.iloc[i,:][2]})
+                    # my_result[j]['coordinate'] = json.dumps(my_result[j]['coordinate'])
                     break
         # for dct in my_result:
-        #     dct['coordindate'] = '{}'.format(dct['coordindate'])
+        #     dct['coordinate'] = '{}'.format(dct['coordinate'])
 
         return my_result
         

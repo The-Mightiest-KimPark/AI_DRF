@@ -11,6 +11,7 @@ from urllib import request as rqt
 from io import BytesIO
 from PIL import Image
 from .import load
+from .serializers import GrocerySerializer
 import json
 import requests
 
@@ -82,11 +83,12 @@ def AITest(request):
     print('타입 : ', type(ai_result))
     print('ai_result : ', ai_result)
     
+    serializers = GrocerySerializer(ai_result, many=True)
     # ai_result = json.dumps(ai_result)
     # print('타입 : ', type(ai_result))
     # ai_result = json.loads(ai_result)
     # print('타입 : ', type(ai_result))
-    return HttpResponse(ai_result)
-
+    #return Response(json.dumps(ai_result), content_type='application/json')
+    return Response(serializers.data)
         
 
