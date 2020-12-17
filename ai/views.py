@@ -42,8 +42,8 @@ def AiImgGrocery(request):
 @api_view(['GET'])
 def AITest(request):
     # 이미지 정보 받음
-    # url = request.GET.get('url')
-    # print('url : ', url)
+    url = request.GET.get('url')
+    print('url : ', url)
 
     #------------근웅----------------
     # url = "https://themightiestkpk1.s3.amazonaws.com/train12124.jpg"
@@ -61,22 +61,22 @@ def AITest(request):
     # ------------------------------
 
     # AI분석 로직
-    ai_result = [{
-        'all_grocery_id': 1,
-        'name' : '바나나',
-        'count' : 3,
-        'coordinate' : [[1,2],[3,2]]
-    },{
-        'all_grocery_id': 2,
-        'name' : '사과',
-        'count' : 1,
-        'coordinate' : [[1,2],[3,2]]
-    },{
-        'all_grocery_id': 3,
-        'name' : '고구마',
-        'count' : 2,
-        'coordinate' : [[1,2],[3,2]]
-    }]
+    # ai_result = [{
+    #     'all_grocery_id': 1,
+    #     'name' : '바나나',
+    #     'count' : 3,
+    #     'coordinate' : [[1,2],[3,2]]
+    # },{
+    #     'all_grocery_id': 2,
+    #     'name' : '사과',
+    #     'count' : 1,
+    #     'coordinate' : [[1,2],[3,2]]
+    # },{
+    #     'all_grocery_id': 3,
+    #     'name' : '고구마',
+    #     'count' : 2,
+    #     'coordinate' : [[1,2],[3,2]]
+    # }]
 
     print('타입 : ', type(ai_result))
     print('ai_result : ', ai_result)
