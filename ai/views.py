@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.http import HttpResponse
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -85,7 +86,7 @@ def AITest(request):
     # print('타입 : ', type(ai_result))
     # ai_result = json.loads(ai_result)
     # print('타입 : ', type(ai_result))
-    return Response(data=ai_result, status=status.HTTP_200_OK)
+    return HttpResponse(ai_result)
 
         
 
