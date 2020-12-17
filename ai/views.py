@@ -53,10 +53,10 @@ def AITest(request):
 
     # yolo = YOLO(model_path=model_path, classes_path=class_path)
 
-    # # 이미지 로딩
-    # res = rqt.urlopen(url).read()
-    # img = Image.open(BytesIO(res))
-    # ai_result = load.pre_yolo.yolo.my_detect_image(img)
+    # 이미지 로딩
+    res = rqt.urlopen(url).read()
+    img = Image.open(BytesIO(res))
+    ai_result = load.pre_yolo.yolo.my_detect_image(img)
 
     # ------------------------------
 
