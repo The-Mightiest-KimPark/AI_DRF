@@ -146,17 +146,26 @@ class YOLO(object):
 #         print(out_boxes, out_scores, out_classes)
 ##--------------------AllGrocery DB 없을 때----------------------
         names = []
-
         for c in out_classes:
             tmp = self.class_names[c]                    
             names.append(tmp)
 
+        tops = []
+        lefts = []
+        rights = []
+        bottoms = []
+        for i, c in list(enumerate(out_classes)):
+            box = out_boxes[i]
+            top, left, bottom, right = box
 
-        # x_coords  = (out_boxes[:,0] + out_boxes[:,2])/2
-        # y_coords  = (out_boxes[:,1] + out_boxes[:,3])/2
+            tops.append(max(0, np.floor(top + 0.5).astype('int32')))
+            lefts.append(max(0, np.floor(left + 0.5).astype('int32')))
+            bottoms.append(min(image.size[1], np.floor(bottom + 0.5).astype('int32')))
+            rights.append(min(image.size[0], np.floor(right + 0.5).astype('int32')))
 
-        x_coords = (out_boxes[:,1] + out_boxes[:,3])/2
-        y_coords = 480 - (out_boxes[:,0] + out_boxes[:,2])/2
+
+        y_coords = [(lefts[i] + rights[i])/2 for i in range(len(out_classes))]
+        x_coords = [480-(tops[i] + bottoms[i])/2 for i in range(len(out_classes))]
 
         df = pd.DataFrame({'name': names, 'x_coord':x_coords, 'y_coord':y_coords})
         name_unq = df['name'].unique()
@@ -172,8 +181,6 @@ class YOLO(object):
                     # my_result[j]['coordinate'].append({"x": df.iloc[i,:][1], "y":df.iloc[i,:][2]})
                     # my_result[j]['coordinate'] = json.dumps(my_result[j]['coordinate'])
                     break
-        # for dct in my_result:
-        #     dct['coordinate'] = '{}'.format(dct['coordinate'])
 
         return my_result
         
