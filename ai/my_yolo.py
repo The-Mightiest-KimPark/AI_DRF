@@ -152,8 +152,11 @@ class YOLO(object):
             names.append(tmp)
 
 
-        x_coords  = (out_boxes[:,0] + out_boxes[:,2])/2
-        y_coords  = (out_boxes[:,1] + out_boxes[:,3])/2
+        # x_coords  = (out_boxes[:,0] + out_boxes[:,2])/2
+        # y_coords  = (out_boxes[:,1] + out_boxes[:,3])/2
+
+        x_coords = (out_boxes[:,1] + out_boxes[:,3])/2
+        y_coords = 480 - (out_boxes[:,0] + out_boxes[:,2])/2
 
         df = pd.DataFrame({'name': names, 'x_coord':x_coords, 'y_coord':y_coords})
         name_unq = df['name'].unique()
